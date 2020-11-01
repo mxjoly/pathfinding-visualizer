@@ -25,6 +25,7 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [algorithms]);
 
+  // This function is used to generate a table on different screen with boxes as squares
   function calculateGraphDim() {
     const w = window.innerWidth;
     const h = window.innerHeight;
@@ -38,13 +39,13 @@ function App() {
         y = x % y;
         x = t;
       }
-      return x > 30 ? x : 30; // The minimal size of the table cases is 30px
+      return x > 30 ? x : 30; // The minimal size of the table boxes is 20px
     }
 
     const gcd = greatestCommonDivisor(w, h);
-    const caseW = Math.floor(w / gcd);
-    const caseH = Math.floor(h / gcd);
-    return [caseW, caseH];
+    const tableW = Math.floor(w / gcd);
+    const tableH = Math.floor(h / gcd);
+    return [tableW, tableH];
   }
 
   function reset() {
@@ -57,7 +58,7 @@ function App() {
   }
 
   function resetGraph() {
-    // Calculate the best dimension for the cases of the table
+    // Calculate the best dimension for the table boxes
     const [width, height] = calculateGraphDim();
 
     // Init a two dimensionnal array as the graph
