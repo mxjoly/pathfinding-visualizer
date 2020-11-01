@@ -4,6 +4,6 @@
   position: absolute;
   bottom: 0;
   width: inherit;
-  height: calc(100vh - #{constants.$navigation-bar-height});
+  height: 100%;
   border-collapse: collapse;
 }
