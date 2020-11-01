@@ -2,4 +2,4 @@
 
 This project helps you to understand the process behind the pathfinding algortihms.
 
-![](./demo.gif)
+![demo](demo.png)
