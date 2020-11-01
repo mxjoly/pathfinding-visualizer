@@ -1,0 +1,68 @@
+@use '../../../constants';
+@use '../../../utils';
+
+.Menu {
+  @include utils.disable-selection();
+  position: relative;
+  display: inline-block;
+  max-width: 200px;
+
+  &_capitalize {
+    text-transform: capitalize;
+  }
+
+  &_uppercase {
+    text-transform: uppercase;
+  }
+
+  &__Button {
+    @include utils.disable-selection();
+    @include utils.box-sizing(border-box);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    padding: 5px;
+    font-family: 'Avenir', sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    color: black;
+    background-color: transparent;
+    text-transform: inherit;
+    cursor: pointer;
+
+    &_icon:after {
+      padding-left: 4px;
+      content: ' ▾';
+    }
+  }
+
+  &__Items {
+    @include utils.box-shadow(2px, 2px, 3px, 1px, rgba(0, 0, 0, 0.35));
+    @include utils.transform(translateX(-50%));
+    position: absolute;
+    left: 50%;
+    display: none;
+    width: inherit;
+    height: auto;
+    margin-top: 0px;
+    background: #fff;
+
+    &_visible {
+      display: block;
+    }
+  }
+
+  &__Item {
+    padding: 10px;
+    font-family: 'Avenir', sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    color: black;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+}

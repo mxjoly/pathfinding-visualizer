@@ -1,0 +1,9 @@
+@use '../../../constants';
+
+.Graph {
+  position: absolute;
+  bottom: 0px;
+  width: inherit;
+  height: calc(100vh - #{constants.$navigation-bar-height});
+  border-collapse: collapse;
+}

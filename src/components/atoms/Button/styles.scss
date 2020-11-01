@@ -1,0 +1,11 @@
+@use '../../../constants';
+
+.Button {
+  position: relative;
+  display: flex;
+  max-height: calc(#{constants.$navigation-bar-height}/ 2);
+  padding: 5px;
+  font-family: 'Avenir', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+}

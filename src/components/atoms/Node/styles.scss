@@ -1,0 +1,35 @@
+@use '../../../constants';
+@use '../../../utils';
+
+.Node {
+  @include utils.disable-selection();
+  @include utils.transition(background-color, 500ms);
+
+  font-family: 'Avenir', sans-serif;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.5);
+  border: solid 1px black;
+  background-color: constants.$node-background-color;
+  animation: 500ms ease-in;
+  cursor: pointer;
+
+  &_visited {
+    background-color: constants.$node-visited-color;
+  }
+
+  &_departure {
+    background-color: constants.$node-departure-color;
+  }
+
+  &_destination {
+    background-color: constants.$node-destination-color;
+  }
+
+  &_path {
+    background-color: constants.$node-path-color;
+  }
+
+  &_barrier {
+    background-color: constants.$node-barrier-color;
+  }
+}

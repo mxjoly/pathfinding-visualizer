@@ -1,0 +1,18 @@
+@use '../../../constants';
+@use '../../../utils';
+
+.ToggleButton {
+  @include utils.disable-selection();
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: calc(#{constants.$navigation-bar-height} / 2);
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 5px;
+  font-family: 'Avenir', sans-serif;
+  font-size: 1em;
+  font-weight: 500;
+}

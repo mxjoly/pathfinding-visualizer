@@ -1,0 +1,10 @@
+@use '../../../constants';
+
+.RadioButtonGroup {
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (max-width: 640px) {
+    margin-left: 5px;
+  }
+}

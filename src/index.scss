@@ -1,0 +1,18 @@
+@use './utils';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  @include utils.disable-selection();
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+}

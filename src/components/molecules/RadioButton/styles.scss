@@ -1,0 +1,26 @@
+@use '../../../constants';
+@use '../../../utils';
+
+.RadioButton {
+  @include utils.disable-selection();
+  display: inline-block;
+  padding: 0px 5px;
+
+  &__Input {
+    cursor: pointer;
+    height: 1em;
+    width: 1em;
+  }
+
+  &__Input:checked + &__Label {
+    color: constants.$primary-color;
+  }
+
+  &__Label {
+    margin-left: 5px;
+    color: #323232;
+    font-family: sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+  }
+}
