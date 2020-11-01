@@ -185,8 +185,7 @@ function App() {
     <div className="App">
       <ControlBar
         algorithms={Object.keys(algorithms).map((name) => {
-          name = name.toLowerCase();
-          return name.charAt(0).toUpperCase() + name.slice(1);
+          return name.toLowerCase().charAt(0).toUpperCase() + name.slice(1);
         })}
         displayNodeWeight={displayNodeWeight}
         onStart={onStart}
