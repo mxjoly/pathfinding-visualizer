@@ -2,7 +2,7 @@
 
 .Graph {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   width: inherit;
   height: calc(100vh - #{constants.$navigation-bar-height});
   border-collapse: collapse;
