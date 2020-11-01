@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.scss';
 
 import Graph from './components/molecules/Graph';
-import NavigationBar from './components/organisms/NavigationBar';
+import ControlBar from './components/organisms/ControlBar';
 import algorithms from './algorithms';
 
 const selectionModes = {
@@ -183,7 +183,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavigationBar
+      <ControlBar
         algorithms={Object.keys(algorithms).map((name) => {
           name = name.toLowerCase();
           return name.charAt(0).toUpperCase() + name.slice(1);

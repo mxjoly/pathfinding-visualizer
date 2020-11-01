@@ -8,7 +8,7 @@ import { IconContext } from 'react-icons';
 import { MdPlayArrow, MdRefresh, MdBugReport } from 'react-icons/md';
 import './styles.scss';
 
-function NavigationBar(props) {
+function ControlBar(props) {
   function onChangeValue(event) {
     if (event.target.value.match(/(departure|destination|barrier)/)) {
       props.onSelectionModeChange(event.target.value);
@@ -54,7 +54,7 @@ function NavigationBar(props) {
   );
 }
 
-NavigationBar.propTypes = {
+ControlBar.propTypes = {
   algorithms: PropTypes.arrayOf(PropTypes.string).isRequired,
   displayNodeWeight: PropTypes.bool.isRequired,
   onStart: PropTypes.func.isRequired,
@@ -64,4 +64,4 @@ NavigationBar.propTypes = {
   onDisplayNodeWeight: PropTypes.func,
 };
 
-export default NavigationBar;
+export default ControlBar;
