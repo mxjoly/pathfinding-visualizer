@@ -3,6 +3,7 @@
 
 .NavigationBar {
   @include utils.box-shadow(0px, 4px, 10px, 2px, rgba(0, 0, 0, 0.75));
+  @include utils.box-sizing(border-box);
 
   position: relative;
   display: flex;
@@ -12,17 +13,19 @@
   height: constants.$navigation-bar-height;
   top: 0;
   background-color: rgb(255, 255, 255);
+  padding: 0px 10px;
 
   @media (max-width: 640px) {
     justify-content: center;
+    padding: 0px;
   }
 
   h1 {
+    text-align: left;
     color: constants.$primary-color;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 1.7em;
-    margin: 0px 10px;
 
     @media (max-width: 640px) {
       display: none;
@@ -33,10 +36,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    @media (min-width: 640px) {
-      margin-right: 5px;
-    }
   }
 
   .Icons {
