@@ -49,6 +49,7 @@ function Graph(props) {
                     style={{
                       maxWidth: `${maxWidth}px`,
                       maxHeight: `${maxHeight}px`,
+                      borderColor: props.displayGrid ? 'black' : 'transparent',
                     }}
                     displayWeight={props.displayNodeWeight}
                     onSelect={onSelect}
@@ -69,6 +70,7 @@ function Graph(props) {
 Graph.propTypes = {
   graph: PropTypes.arrayOf(PropTypes.array),
   displayNodeWeight: PropTypes.bool,
+  displayGrid: PropTypes.bool,
   selectionMode: PropTypes.oneOf(['departure', 'destination', 'barrier']),
   onGraphChange: PropTypes.func.isRequired,
   onSelectNode: PropTypes.func.isRequired,

@@ -1,4 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep';
+import { getAllNodes, getUnvisitedNeighbours } from './utils';
 
 export default function dijkstra(initGraph, departure, destination) {
   let trace = [];
@@ -21,7 +22,7 @@ export default function dijkstra(initGraph, departure, destination) {
       min.isVisited = true;
       N = N.filter((node) => node !== min);
 
-      for (const neighbour of getUnvisitedNeightbours(min, graph)) {
+      for (const neighbour of getUnvisitedNeighbours(min, graph)) {
         if (neighbour.weight > min.weight + 1) {
           neighbour.weight = min.weight + 1;
           neighbour.predecessor = { col: min.col, row: min.row };
@@ -53,27 +54,8 @@ export default function dijkstra(initGraph, departure, destination) {
   return trace;
 }
 
-function getAllNodes(graph) {
-  return Object.values(graph).reduce((list, current) => {
-    list = list.concat(current);
-    return list;
-  }, []);
-}
-
 function getNearestNode(nodes) {
   return nodes.sort((a, b) => a.weight - b.weight)[0];
-}
-
-function getUnvisitedNeightbours(node, graph) {
-  const height = graph.length;
-  const width = graph[0].length;
-  const { col, row } = node;
-  return [
-    row - 1 > -1 && !graph[row - 1][col].isVisited && graph[row - 1][col],
-    row + 1 < height && !graph[row + 1][col].isVisited && graph[row + 1][col],
-    col - 1 > -1 && !graph[row][col - 1].isVisited && graph[row][col - 1],
-    col + 1 < width && !graph[row][col + 1].isVisited && graph[row][col + 1],
-  ].filter(Boolean);
 }
 
 function createTrace(initGraph, finalGraph, path) {

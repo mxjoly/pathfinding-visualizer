@@ -4,6 +4,7 @@ import './App.scss';
 import Graph from './components/molecules/Graph';
 import ControlBar from './components/organisms/ControlBar';
 import algorithms from './algorithms';
+import generateMaze from './algorithms/generateMaze';
 
 const selectionModes = {
   DEPARTURE: 'departure',
@@ -15,6 +16,7 @@ function App() {
   const [algorithm, setAlgorithm] = useState(algorithms.DIJKSTRA);
   const [graph, setGraph] = useState([]);
   const [displayNodeWeight, setDisplayNodeWeight] = useState(false);
+  const [displayGrid, setDisplayGrid] = useState(true);
   const [selectionMode, setSelectionMode] = useState(selectionModes.DEPARTURE);
   const [timeoutIds, setTimeoutIds] = useState([]);
   const [departurePos, setDeparturePos] = useState(null);
@@ -189,15 +191,21 @@ function App() {
           return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
         })}
         displayNodeWeight={displayNodeWeight}
+        displayGrid={displayGrid}
         onStart={onStart}
         onReset={reset}
         onAlgorithmChange={onAlgorithmChange}
         onSelectionModeChange={onSelectionMode}
-        onDisplayNodeWeight={() => setDisplayNodeWeight(!displayNodeWeight)}
+        onDisplayNodeWeightChange={() =>
+          setDisplayNodeWeight(!displayNodeWeight)
+        }
+        onDisplayGridChange={() => setDisplayGrid(!displayGrid)}
+        onMazeGenerate={() => setGraph(generateMaze(graph))}
       />
       <Graph
         graph={graph}
         displayNodeWeight={displayNodeWeight}
+        displayGrid={displayGrid}
         selectionMode={selectionMode}
         onGraphChange={setGraph}
         onSelectNode={onSelectNode}

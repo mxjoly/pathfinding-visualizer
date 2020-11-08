@@ -5,7 +5,14 @@ import Menu from '../../molecules/Menu';
 import RadioButtonGroup from '../../organisms/RadioButtonGroup';
 import ToggleButton from '../../atoms/ToggleButton';
 import { IconContext } from 'react-icons';
-import { MdPlayArrow, MdRefresh, MdBugReport } from 'react-icons/md';
+import {
+  MdPlayArrow,
+  MdRefresh,
+  MdBugReport,
+  MdGridOn,
+  MdGridOff,
+  MdGavel,
+} from 'react-icons/md';
 import './styles.scss';
 
 function ControlBar(props) {
@@ -34,9 +41,15 @@ function ControlBar(props) {
           <Button onClick={props.onReset} useIcon>
             <MdRefresh />
           </Button>
+          <Button onClick={props.onDisplayGridChange} useIcon>
+            {props.displayGrid ? <MdGridOff /> : <MdGridOn />}
+          </Button>
+          <Button onClick={props.onMazeGenerate} useIcon>
+            <MdGavel />
+          </Button>
           <ToggleButton
             selected={props.displayNodeWeight}
-            toggleSelected={props.onDisplayNodeWeight}
+            toggleSelected={props.onDisplayNodeWeightChange}
           >
             <MdBugReport
               color={props.displayNodeWeight ? 'firebrick' : '#000000'}
@@ -57,11 +70,14 @@ function ControlBar(props) {
 ControlBar.propTypes = {
   algorithms: PropTypes.arrayOf(PropTypes.string).isRequired,
   displayNodeWeight: PropTypes.bool.isRequired,
+  displayGrid: PropTypes.bool.isRequired,
   onStart: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   onAlgorithmChange: PropTypes.func.isRequired,
   onSelectionModeChange: PropTypes.func.isRequired,
-  onDisplayNodeWeight: PropTypes.func,
+  onDisplayNodeWeightChange: PropTypes.func,
+  onDisplayGridChange: PropTypes.func,
+  onMazeGenerate: PropTypes.func,
 };
 
 export default ControlBar;
