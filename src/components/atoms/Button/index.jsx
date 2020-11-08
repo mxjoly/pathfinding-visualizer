@@ -13,7 +13,9 @@ function Button(props) {
       }
       onClick={props.onClick}
     >
-      {props.tooltip && <span class="Button__Tooltip">{props.tooltip}</span>}
+      {props.tooltip && (
+        <span className="Button__Tooltip">{props.tooltip}</span>
+      )}
       {props.children}
     </button>
   );

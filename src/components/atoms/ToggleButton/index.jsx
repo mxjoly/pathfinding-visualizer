@@ -11,7 +11,7 @@ function ToggleButton(props) {
       onClick={props.toggleSelected}
     >
       {props.tooltip && (
-        <span class="ToggleButton__Tooltip">{props.tooltip}</span>
+        <span className="ToggleButton__Tooltip">{props.tooltip}</span>
       )}
       {props.children}
     </button>

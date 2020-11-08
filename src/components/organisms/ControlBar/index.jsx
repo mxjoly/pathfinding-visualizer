@@ -25,7 +25,7 @@ function ControlBar(props) {
   }
 
   return (
-    <div className="NavigationBar">
+    <div className="ControlBar">
       <h1>Pathfinding visualizer</h1>
       <div>
         <RadioButtonGroup
@@ -34,47 +34,51 @@ function ControlBar(props) {
           values={['departure', 'destination', 'barrier']}
           defaultValue="departure"
         />
-        <IconContext.Provider value={{ className: 'Icons' }}>
-          <Button
-            onClick={props.onStart}
-            useIcon
-            tooltip="Start the visualization"
+        <div className="ControlBar__Controls">
+          <IconContext.Provider
+            value={{ className: 'ControlBar__Controls__Icons' }}
           >
-            <MdPlayArrow />
-          </Button>
-          <Button onClick={props.onReset} useIcon tooltip="Clean the map">
-            <MdRefresh />
-          </Button>
-          <Button
-            onClick={props.onDisplayGridChange}
-            useIcon
-            tooltip={props.displayGrid ? 'Hide the grid' : 'Show the grid'}
-          >
-            {props.displayGrid ? <MdGridOff /> : <MdGridOn />}
-          </Button>
-          <Button
-            onClick={props.onMazeGenerate}
-            useIcon
-            tooltip="Generate a maze"
-          >
-            <MdGavel />
-          </Button>
-          <ToggleButton
-            selected={props.displayNodeWeight}
-            toggleSelected={props.onDisplayNodeWeightChange}
-            tooltip="Debug"
-          >
-            <MdBugReport
-              color={props.displayNodeWeight ? 'firebrick' : '#000000'}
-            />
-          </ToggleButton>
-        </IconContext.Provider>
-        <Menu
-          items={props.algorithms}
-          defaultItem={props.algorithms[0]}
-          placeholder={'Algorithm'}
-          onSelect={(e) => props.onAlgorithmChange(e)}
-        />
+            <Button
+              onClick={props.onStart}
+              useIcon
+              tooltip="Start the visualization"
+            >
+              <MdPlayArrow />
+            </Button>
+            <Button onClick={props.onReset} useIcon tooltip="Clean the map">
+              <MdRefresh />
+            </Button>
+            <Button
+              onClick={props.onDisplayGridChange}
+              useIcon
+              tooltip={props.displayGrid ? 'Hide the grid' : 'Show the grid'}
+            >
+              {props.displayGrid ? <MdGridOff /> : <MdGridOn />}
+            </Button>
+            <Button
+              onClick={props.onMazeGenerate}
+              useIcon
+              tooltip="Generate a maze"
+            >
+              <MdGavel />
+            </Button>
+            <ToggleButton
+              selected={props.displayNodeWeight}
+              toggleSelected={props.onDisplayNodeWeightChange}
+              tooltip="Debug"
+            >
+              <MdBugReport
+                color={props.displayNodeWeight ? 'firebrick' : '#000000'}
+              />
+            </ToggleButton>
+          </IconContext.Provider>
+          <Menu
+            items={props.algorithms}
+            defaultItem={props.algorithms[0]}
+            placeholder={'Algorithm'}
+            onSelect={(e) => props.onAlgorithmChange(e)}
+          />
+        </div>
       </div>
     </div>
   );
