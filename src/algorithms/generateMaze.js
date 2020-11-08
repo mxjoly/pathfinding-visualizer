@@ -56,5 +56,19 @@ export default function generateMaze(initialGraph) {
     });
   });
 
+  // Make sure to have walls on every borders
+  const height = graph.length;
+  const width = graph[0].length;
+  if (height % 2 === 0) {
+    for (let i = 0; i < width; i++) {
+      Object.assign(graph[height - 1][i], { isBarrier: true });
+    }
+  }
+  if (width % 2 === 0) {
+    for (let i = 0; i < height; i++) {
+      Object.assign(graph[i][width - 1], { isBarrier: true });
+    }
+  }
+
   return graph;
 }
