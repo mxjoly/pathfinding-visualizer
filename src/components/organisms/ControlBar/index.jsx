@@ -35,21 +35,34 @@ function ControlBar(props) {
           defaultValue="departure"
         />
         <IconContext.Provider value={{ className: 'Icons' }}>
-          <Button onClick={props.onStart} useIcon>
+          <Button
+            onClick={props.onStart}
+            useIcon
+            tooltip="Start the visualization"
+          >
             <MdPlayArrow />
           </Button>
-          <Button onClick={props.onReset} useIcon>
+          <Button onClick={props.onReset} useIcon tooltip="Clean the map">
             <MdRefresh />
           </Button>
-          <Button onClick={props.onDisplayGridChange} useIcon>
+          <Button
+            onClick={props.onDisplayGridChange}
+            useIcon
+            tooltip={props.displayGrid ? 'Hide the grid' : 'Show the grid'}
+          >
             {props.displayGrid ? <MdGridOff /> : <MdGridOn />}
           </Button>
-          <Button onClick={props.onMazeGenerate} useIcon>
+          <Button
+            onClick={props.onMazeGenerate}
+            useIcon
+            tooltip="Generate a maze"
+          >
             <MdGavel />
           </Button>
           <ToggleButton
             selected={props.displayNodeWeight}
             toggleSelected={props.onDisplayNodeWeightChange}
+            tooltip="Debug"
           >
             <MdBugReport
               color={props.displayNodeWeight ? 'firebrick' : '#000000'}

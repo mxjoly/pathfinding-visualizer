@@ -13,6 +13,7 @@ function Button(props) {
       }
       onClick={props.onClick}
     >
+      {props.tooltip && <span class="Button__Tooltip">{props.tooltip}</span>}
       {props.children}
     </button>
   );
@@ -24,6 +25,7 @@ Button.propTypes = {
   onClick: PropTypes.func.isRequired,
   style: PropTypes.object,
   useIcon: PropTypes.bool,
+  tooltip: PropTypes.string,
 };
 
 export default Button;

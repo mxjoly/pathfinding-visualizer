@@ -10,6 +10,9 @@ function ToggleButton(props) {
       }`}
       onClick={props.toggleSelected}
     >
+      {props.tooltip && (
+        <span class="ToggleButton__Tooltip">{props.tooltip}</span>
+      )}
       {props.children}
     </button>
   );
@@ -19,6 +22,7 @@ ToggleButton.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   selected: PropTypes.bool.isRequired,
   toggleSelected: PropTypes.func.isRequired,
+  tooltip: PropTypes.string,
 };
 
 export default ToggleButton;
