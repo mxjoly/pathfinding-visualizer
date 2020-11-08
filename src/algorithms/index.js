@@ -3,7 +3,7 @@ import dijkstra from './dijkstra';
 
 const algorithms = {
   A: {
-    name: 'A',
+    name: 'A*',
     function: a,
   },
   DIJKSTRA: {
