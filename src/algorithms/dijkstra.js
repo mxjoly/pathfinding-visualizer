@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep';
-import { getAllNodes, getUnvisitedNeighbours } from './utils';
+import { getAllNodes, getUnvisitedNeighbours, createTrace } from './utils';
 
 export default function dijkstra(initGraph, departure, destination) {
   let trace = [];
@@ -23,8 +23,8 @@ export default function dijkstra(initGraph, departure, destination) {
       N = N.filter((node) => node !== min);
 
       for (const neighbour of getUnvisitedNeighbours(min, graph)) {
-        if (neighbour.weight > min.weight + 1) {
-          neighbour.weight = min.weight + 1;
+        if (neighbour.distance > min.distance + 1) {
+          neighbour.distance = min.distance + 1;
           neighbour.predecessor = { col: min.col, row: min.row };
         }
       }
@@ -55,41 +55,5 @@ export default function dijkstra(initGraph, departure, destination) {
 }
 
 function getNearestNode(nodes) {
-  return nodes.sort((a, b) => a.weight - b.weight)[0];
-}
-
-function createTrace(initGraph, finalGraph, path) {
-  let trace = [];
-  let graph = cloneDeep(initGraph);
-  let sortedNodes = [];
-
-  // Sort and group all the node by their weight
-  getAllNodes(finalGraph)
-    .filter((node) => node.isBarrier === false)
-    .forEach((node) => {
-      if (isFinite(node.weight)) {
-        if (!sortedNodes[node.weight]) {
-          sortedNodes[node.weight] = [];
-        }
-        sortedNodes[node.weight].push(node);
-      }
-    });
-
-  // Create the trace before searching the path
-  for (let i = 1; i < sortedNodes.length; i++) {
-    sortedNodes[i].forEach((node) => {
-      graph[node.row][node.col] = node;
-    });
-    trace.push(cloneDeep(graph));
-  }
-
-  // Create the trace of the path
-  for (const node of path) {
-    if (graph[node.row][node.col].isDestination === false) {
-      graph[node.row][node.col].isPath = true;
-      trace.push(cloneDeep(graph));
-    }
-  }
-
-  return trace;
+  return nodes.sort((a, b) => a.distance - b.distance)[0];
 }

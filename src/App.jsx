@@ -13,9 +13,9 @@ const selectionModes = {
 };
 
 function App() {
-  const [algorithm, setAlgorithm] = useState(algorithms.DIJKSTRA);
+  const [algorithm, setAlgorithm] = useState(algorithms.A);
   const [graph, setGraph] = useState([]);
-  const [displayNodeWeight, setDisplayNodeWeight] = useState(false);
+  const [displayNodeDistance, setDisplayNodeDistance] = useState(false);
   const [displayGrid, setDisplayGrid] = useState(true);
   const [selectionMode, setSelectionMode] = useState(selectionModes.DEPARTURE);
   const [timeoutIds, setTimeoutIds] = useState([]);
@@ -54,7 +54,6 @@ function App() {
     clearTimeouts();
     resetGraph();
     setTimeoutIds([]);
-    setSelectionMode(selectionModes.DEPARTURE);
     setDestinationPos(null);
     setDestinationPos(null);
   }
@@ -73,7 +72,7 @@ function App() {
             return {
               col,
               row,
-              weight: Infinity,
+              distance: Infinity,
               predecessor: null,
               isVisited: false,
               isDeparture: false,
@@ -152,7 +151,7 @@ function App() {
       if (departurePos) {
         Object.assign(graph[departurePos.row][departurePos.col], {
           isDeparture: false,
-          weight: Infinity,
+          distance: Infinity,
         });
       }
       setDeparturePos({ col, row });
@@ -160,7 +159,7 @@ function App() {
       if (destinationPos) {
         Object.assign(graph[destinationPos.row][destinationPos.col], {
           isDestination: false,
-          weight: Infinity,
+          distance: Infinity,
         });
       }
       setDestinationPos({ col, row });
@@ -168,17 +167,17 @@ function App() {
   }
 
   function onAlgorithmChange(algorithmName) {
-    const isValidAlgorithm = Object.keys(algorithms)
-      .map((name) => name.toLowerCase())
-      .includes(algorithmName.toLowerCase());
+    const isValidAlgorithm = Object.values(algorithms)
+      .map(({ name }) => name)
+      .includes(algorithmName);
 
     if (isValidAlgorithm) {
-      switch (algorithmName.toLowerCase()) {
-        case 'dijkstra':
-          return setAlgorithm(algorithms.DIJKSTRA);
-        default:
+      Object.entries(algorithms).forEach(([key, props]) => {
+        if (props.name === algorithmName) {
+          setAlgorithm(algorithms[key]);
           return;
-      }
+        }
+      });
     } else {
       console.warn('Unknown algorithm name :', algorithmName);
     }
@@ -187,24 +186,22 @@ function App() {
   return (
     <div className="App">
       <ControlBar
-        algorithms={Object.keys(algorithms).map((name) => {
-          return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-        })}
-        displayNodeWeight={displayNodeWeight}
+        algorithms={Object.values(algorithms).map(({ name }) => name)}
+        displayNodeDistance={displayNodeDistance}
         displayGrid={displayGrid}
         onStart={onStart}
         onReset={reset}
         onAlgorithmChange={onAlgorithmChange}
         onSelectionModeChange={onSelectionMode}
-        onDisplayNodeWeightChange={() =>
-          setDisplayNodeWeight(!displayNodeWeight)
+        onDisplayNodeDistanceChange={() =>
+          setDisplayNodeDistance(!displayNodeDistance)
         }
         onDisplayGridChange={() => setDisplayGrid(!displayGrid)}
         onMazeGenerate={() => setGraph(generateMaze(graph))}
       />
       <Graph
         graph={graph}
-        displayNodeWeight={displayNodeWeight}
+        displayNodeDistance={displayNodeDistance}
         displayGrid={displayGrid}
         selectionMode={selectionMode}
         onGraphChange={setGraph}

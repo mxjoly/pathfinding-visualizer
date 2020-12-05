@@ -63,12 +63,12 @@ function ControlBar(props) {
               <MdGavel />
             </Button>
             <ToggleButton
-              selected={props.displayNodeWeight}
-              toggleSelected={props.onDisplayNodeWeightChange}
+              selected={props.displayNodeDistance}
+              toggleSelected={props.onDisplayNodeDistanceChange}
               tooltip="Debug"
             >
               <MdBugReport
-                color={props.displayNodeWeight ? 'firebrick' : '#000000'}
+                color={props.displayNodeDistance ? 'firebrick' : '#000000'}
               />
             </ToggleButton>
           </IconContext.Provider>
@@ -86,13 +86,13 @@ function ControlBar(props) {
 
 ControlBar.propTypes = {
   algorithms: PropTypes.arrayOf(PropTypes.string).isRequired,
-  displayNodeWeight: PropTypes.bool.isRequired,
+  displayNodeDistance: PropTypes.bool.isRequired,
   displayGrid: PropTypes.bool.isRequired,
   onStart: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   onAlgorithmChange: PropTypes.func.isRequired,
   onSelectionModeChange: PropTypes.func.isRequired,
-  onDisplayNodeWeightChange: PropTypes.func,
+  onDisplayNodeDistanceChange: PropTypes.func,
   onDisplayGridChange: PropTypes.func,
   onMazeGenerate: PropTypes.func,
 };

@@ -14,7 +14,7 @@ function Graph(props) {
     switch (props.selectionMode) {
       case 'departure':
         graph[row][col].isDeparture = true;
-        graph[row][col].weight = 0;
+        graph[row][col].distance = 0;
         break;
       case 'destination':
         graph[row][col].isDestination = true;
@@ -51,7 +51,7 @@ function Graph(props) {
                       maxHeight: `${maxHeight}px`,
                       borderColor: props.displayGrid ? 'black' : 'transparent',
                     }}
-                    displayWeight={props.displayNodeWeight}
+                    displayDistance={props.displayNodeDistance}
                     onSelect={onSelect}
                     {...nodeProps}
                   />
@@ -69,7 +69,7 @@ function Graph(props) {
 
 Graph.propTypes = {
   graph: PropTypes.arrayOf(PropTypes.array),
-  displayNodeWeight: PropTypes.bool,
+  displayNodeDistance: PropTypes.bool,
   displayGrid: PropTypes.bool,
   selectionMode: PropTypes.oneOf(['departure', 'destination', 'barrier']),
   onGraphChange: PropTypes.func.isRequired,

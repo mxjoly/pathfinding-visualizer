@@ -33,10 +33,10 @@ function Node(props) {
       row={props.row}
       onClick={() => props.onSelect(props.col, props.row)}
     >
-      {props.displayWeight
-        ? props.weight === Infinity
+      {props.displayDistance
+        ? props.distance === Infinity
           ? '∞'
-          : props.weight
+          : props.distance
         : ''}
     </td>
   );
@@ -46,7 +46,8 @@ Node.propTypes = {
   style: PropTypes.object,
   col: PropTypes.number.isRequired,
   row: PropTypes.number.isRequired,
-  displayWeight: PropTypes.bool.isRequired,
+  distance: PropTypes.number.isRequired,
+  displayDistance: PropTypes.bool.isRequired,
   onSelect: PropTypes.func.isRequired,
   isVisited: PropTypes.bool,
   isDeparture: PropTypes.bool,
@@ -60,6 +61,7 @@ Node.propTypes = {
 };
 
 Node.defaultProps = {
+  distance: Infinity,
   displayWeight: false,
   isVisited: false,
   isDeparture: false,
