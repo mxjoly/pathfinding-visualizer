@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../atoms/Button';
 import Menu from '../../molecules/Menu';
-import RadioButtonGroup from '../../organisms/RadioButtonGroup';
+import RadioButtonGroup from '../../molecules/RadioButtonGroup';
 import ToggleButton from '../../atoms/ToggleButton';
 import { IconContext } from 'react-icons';
 import {
@@ -30,9 +30,9 @@ function ControlBar(props) {
       <div>
         <RadioButtonGroup
           onChange={onChangeValue}
+          current={props.selectionMode}
           names="selectionMode"
           values={['departure', 'destination', 'barrier']}
-          defaultValue="departure"
         />
         <div className="ControlBar__Controls">
           <IconContext.Provider
@@ -85,6 +85,7 @@ function ControlBar(props) {
 }
 
 ControlBar.propTypes = {
+  selectionMode: PropTypes.string,
   algorithms: PropTypes.arrayOf(PropTypes.string).isRequired,
   displayNodeDistance: PropTypes.bool.isRequired,
   displayGrid: PropTypes.bool.isRequired,

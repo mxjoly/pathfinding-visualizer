@@ -11,6 +11,8 @@ function Graph(props) {
   function onSelect(col, row) {
     const graph = [...props.graph];
 
+    console.log(`${col} ${row}`);
+
     switch (props.selectionMode) {
       case 'departure':
         graph[row][col].isDeparture = true;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RadioButton from '../../molecules/RadioButton';
+import RadioButton from '../../atoms/RadioButton';
 import './styles.scss';
 
 function RadioButtonGroup(props) {
@@ -12,7 +12,7 @@ function RadioButtonGroup(props) {
           name={props.names}
           value={value}
           label={value.charAt(0).toUpperCase() + value.slice(1)}
-          defaultChecked={value === props.defaultValue}
+          checked={value.toLowerCase() === props.current.toLowerCase()}
         />
       ))}
     </div>
@@ -20,10 +20,10 @@ function RadioButtonGroup(props) {
 }
 
 RadioButtonGroup.propTypes = {
+  current: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   names: PropTypes.string.isRequired,
   values: PropTypes.arrayOf(PropTypes.string).isRequired,
-  defaultValue: PropTypes.string,
 };
 
 export default RadioButtonGroup;

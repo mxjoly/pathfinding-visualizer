@@ -10,7 +10,8 @@ function RadioButton(props) {
         type="radio"
         name={props.name}
         value={props.value}
-        defaultChecked={props.defaultChecked}
+        readOnly
+        checked={props.checked}
       />
       {props.label && (
         <label className="RadioButton__Label" htmlFor={props.name}>
@@ -25,6 +26,7 @@ RadioButton.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   label: PropTypes.string,
+  checked: PropTypes.bool,
   defaultChecked: PropTypes.bool,
 };
 

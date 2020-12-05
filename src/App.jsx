@@ -54,6 +54,7 @@ function App() {
     clearTimeouts();
     resetGraph();
     setTimeoutIds([]);
+    setSelectionMode(selectionModes.DEPARTURE);
     setDestinationPos(null);
     setDestinationPos(null);
   }
@@ -186,6 +187,7 @@ function App() {
   return (
     <div className="App">
       <ControlBar
+        selectionMode={selectionMode}
         algorithms={Object.values(algorithms).map(({ name }) => name)}
         displayNodeDistance={displayNodeDistance}
         displayGrid={displayGrid}
