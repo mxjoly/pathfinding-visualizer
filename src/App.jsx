@@ -81,7 +81,7 @@ function App() {
               isPath: false,
               isBarrier: false,
             };
-          })
+          }),
       );
 
     // Update the state
@@ -147,7 +147,7 @@ function App() {
     }
   }
 
-  function onSelectNode({ col, row, isDeparture, isDestination, isBarrier }) {
+  function onSelectNode({ col, row, isDeparture, isDestination }) {
     if (isDeparture) {
       if (departurePos) {
         Object.assign(graph[departurePos.row][departurePos.col], {

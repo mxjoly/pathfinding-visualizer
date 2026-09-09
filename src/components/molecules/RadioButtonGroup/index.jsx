@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import RadioButton from '../../atoms/RadioButton';
 import './styles.scss';

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import Node from '../../atoms/Node';
 import './styles.scss';
@@ -40,10 +39,10 @@ function Graph(props) {
             <tr key={row}>
               {nodes.map((nodeProps, col) => {
                 const maxWidth = Math.floor(
-                  props.graph[0].length / window.innerWidth
+                  props.graph[0].length / window.innerWidth,
                 );
                 const maxHeight = Math.floor(
-                  props.graph.length / window.innerHeight
+                  props.graph.length / window.innerHeight,
                 );
                 return (
                   <Node

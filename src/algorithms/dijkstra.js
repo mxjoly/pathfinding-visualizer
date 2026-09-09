@@ -2,8 +2,6 @@ import cloneDeep from 'lodash/cloneDeep';
 import { getAllNodes, getUnvisitedNeighbours, createTrace } from './utils';
 
 export default function dijkstra(initGraph, departure, destination) {
-  let trace = [];
-  let path = [];
   let graph = cloneDeep(initGraph);
   let N = []; // unvisited nodes
 
@@ -15,7 +13,7 @@ export default function dijkstra(initGraph, departure, destination) {
     while (
       N.length > 0 &&
       N.some(
-        (node) => node.col === destination.col && node.row === destination.row
+        (node) => node.col === destination.col && node.row === destination.row,
       )
     ) {
       const min = getNearestNode(N);
@@ -48,8 +46,8 @@ export default function dijkstra(initGraph, departure, destination) {
 
   init();
   updateUnvisitedNeighbours();
-  path = searchPath();
-  trace = createTrace(initGraph, graph, path);
+  const path = searchPath();
+  const trace = createTrace(initGraph, graph, path);
 
   return trace;
 }

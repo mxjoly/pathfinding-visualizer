@@ -2,8 +2,6 @@ import cloneDeep from 'lodash/cloneDeep';
 import { getNeighbours, createTrace, distance } from './utils';
 
 export default function a(initGraph, departure, destination) {
-  let trace = [];
-  let path = [];
   let graph = cloneDeep(initGraph);
   const height = graph.length;
   const width = graph[0].length;
@@ -69,8 +67,8 @@ export default function a(initGraph, departure, destination) {
 
   init();
   loop();
-  path = searchPath();
-  trace = createTrace(initGraph, graph, path);
+  const path = searchPath();
+  const trace = createTrace(initGraph, graph, path);
 
   return trace;
 }

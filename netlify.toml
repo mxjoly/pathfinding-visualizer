@@ -1,0 +1,29 @@
+# Deploy settings live here rather than only in the Netlify UI, so the build is
+# reproducible from the repository alone.
+
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  # Vite 8 requires Node >= 20.19 / 22.12. Kept in sync with .nvmrc.
+  NODE_VERSION = "22"
+
+# Single-page app: serve index.html for any path that is not a real file.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Vite fingerprints everything under /assets, so it can be cached forever.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# The service worker must always be revalidated, or clients get stuck on an
+# old build.
+[[headers]]
+  for = "/service-worker.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

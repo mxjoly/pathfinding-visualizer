@@ -23,7 +23,7 @@ export default function generateMaze(initialGraph) {
 
       const neighbours = getNeighbours(cell, graph, 2);
       const isAllNeighboursVisited = !neighbours.some(
-        (neighbour) => !neighbour.isVisited
+        (neighbour) => !neighbour.isVisited,
       );
 
       if (!isAllNeighboursVisited) {
@@ -37,7 +37,7 @@ export default function generateMaze(initialGraph) {
         // Remove the wall between the current cell and the chosen cell
         Object.assign(
           graph[(rand.row + cell.row) / 2][(rand.col + cell.col) / 2],
-          { isBarrier: false }
+          { isBarrier: false },
         );
         // Mark the chosen cell as visited and push it to the stack
         rand.isVisited = true;

@@ -31,7 +31,7 @@ export function getUnvisitedNeighbours(node, graph, scale = 1) {
 
 export function distance(nodeA, nodeB) {
   return Math.sqrt(
-    Math.pow(nodeB.col - nodeA.col, 2) + Math.pow(nodeB.row - nodeA.row, 2)
+    Math.pow(nodeB.col - nodeA.col, 2) + Math.pow(nodeB.row - nodeA.row, 2),
   );
 }
 
