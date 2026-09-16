@@ -6,8 +6,8 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "react-icons": "^5.7.0",
     "workbox-core": "^7.4.1",
     "workbox-expiration": "^7.4.1",
